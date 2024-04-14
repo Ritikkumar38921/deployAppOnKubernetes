@@ -1,8 +1,6 @@
-package com.practice.trello.db;
+package com.practice.trello;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.practice.trello.entity.Store;
 
 public interface StoreDb extends JpaRepository<Store, Long> {
 

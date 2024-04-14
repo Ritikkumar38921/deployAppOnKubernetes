@@ -1,4 +1,4 @@
-package com.practice.trello.controller;
+package com.practice.trello;
 
 import java.util.List;
 import java.util.Map;
@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.practice.trello.entity.Task;
-import com.practice.trello.service.TaskService;
 
 @RestController
 @RequestMapping("/task")
@@ -43,12 +40,12 @@ public class TaskController {
 	public void updateProject(@RequestBody Task task) {
 		taskService.updateProject(task);
 	}
-	
+
 	@PostMapping("/addList")
-	public Task addList( @RequestBody Map<String,Object> request) {
+	public Task addList(@RequestBody Map<String, Object> request) {
 		String name = (String) request.get("name");
 		String title = (String) request.get("title");
-		return taskService.addList(name,title);
+		return taskService.addList(name, title);
 	}
 
 }

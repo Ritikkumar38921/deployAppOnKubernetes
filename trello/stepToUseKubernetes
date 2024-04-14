@@ -1,0 +1,21 @@
+(1) start minikube -> minikube start
+(2) deploy all file using -> kubectl apply -f <path of file>
+(3) create table in postgres
+		-> kubectl exec -it <postgresql-pod-name>
+		-> psql -U postgres
+		-> create database trello;
+		-> create table using this CREATE TABLE IF NOT EXISTS store
+									(
+									    id bigint NOT NULL ,
+									    age  varchar(255) null ,
+									    name varchar(255) null,
+									    CONSTRAINT store_pkey PRIMARY KEY (id)
+									);
+									
+(4) start backend service for test -> minikube service <service-name> --url
+(5) now delete configmap and update the REACT_APP_FRONTEND_URL to step four url address
+     and then re-deploy;
+     eg: -> kubectl delete -f configmap.yaml
+         -> kubectl apply -f configmap.yaml
+         
+(6) now start frontend service for test using -> minikube service <service-name> --url

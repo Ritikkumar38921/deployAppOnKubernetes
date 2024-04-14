@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-service
+  labels:
+    app: backend-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-service
+  template:
+    metadata:
+      labels:
+        app: backend-service
+    spec:
+      containers:
+        - name: first-spring-boot-app
+          image: ritikumar38921/first_spring_boot_app
+          env:
+            - name: SPRING_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: config-map
+                  key: SPRING_URL
+            
+            - name: USER_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: config-map
+                  key: USER_NAME
+            
+            - name: PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: config-map
+                  key: PASSWORD
+                  
+          ports:
+            - containerPort: 9090

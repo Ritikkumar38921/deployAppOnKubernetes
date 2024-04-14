@@ -1,4 +1,11 @@
-package com.practice.trello.entity;
+package com.practice.trello;
+
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,8 +15,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "store")
-public class Store {
+@Table(name = "task")
+public class Task {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,8 +25,9 @@ public class Store {
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "age")
-	private String age;
+	@JdbcTypeCode(SqlTypes.JSON)
+	@Column(name = "tasks", columnDefinition = "jsonb")
+	private Map<String, Object> tasks = new HashMap<>();
 
 	public Long getId() {
 		return id;
@@ -37,12 +45,12 @@ public class Store {
 		this.name = name;
 	}
 
-	public String getAge() {
-		return age;
+	public Map<String, Object> getTasks() {
+		return tasks;
 	}
 
-	public void setAge(String age) {
-		this.age = age;
+	public void setTasks(Map<String, Object> tasks) {
+		this.tasks = tasks;
 	}
 
 }

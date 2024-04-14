@@ -1,18 +1,14 @@
-package com.practice.trello.service;
+package com.practice.trello;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.practice.trello.db.TaskDb;
-import com.practice.trello.entity.Task;
 
 @Service
 public class TaskService {

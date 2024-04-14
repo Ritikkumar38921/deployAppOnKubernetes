@@ -1,4 +1,5 @@
-package com.practice.trello.config;
+package com.practice.trello;
+
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
