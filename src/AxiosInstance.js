@@ -2,5 +2,5 @@ import axios from "axios";
 
 
 export const myService = axios.create({
-    baseURL: 'http://localhost:9090'
+    baseURL: process.env.REACT_APP_FRONTEND_URL
 });

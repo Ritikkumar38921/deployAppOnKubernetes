@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-service
+  labels:
+    app: frontend-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-service
+  template:
+    metadata:
+      labels:
+        app: frontend-service
+    spec:
+      containers:
+        - name: first-react-app-image
+          image: ritikumar38921/first_react_app
+          ports:
+            - containerPort: 3000
+          env:
+            - name: FRONTEND_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: config-map
+                  key: FRONTEND_URL
+            - name: REACT_APP_FRONTEND_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: config-map
+                  key: REACT_APP_FRONTEND_URL
